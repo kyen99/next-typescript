@@ -9,27 +9,42 @@ const Main = styled.div`
 `
 
 interface Props {
-  className: string;
+  message: string;
 }
-
 interface State {
   value: number;
 }
 
+// Stateless component
+const ValueDisplay = ({ value }: { value: number }) => (
+  <h2>{value}</h2>
+)
+
+// Class-based component with state
 class App extends React.Component<Props, State> {
   public state: State = {
-    value: 10,
+    value: 0,
   }
   public static async getInitialProps() {
-    return {}
+    // Get initial data (i.e. hit an API)
+    return {
+      message: 'Hello World'
+    }
+  }
+  private handleIncrement = (e: any) => {
+    console.log(e.target.value)
+    this.setState({
+      value: this.state.value + 1
+    })
   }
   public render() {
     const { value } = this.state
+    const { message } = this.props
     return (
       <Main>
-        Hello World:
-        {' '}
-        {value}
+        <h1>{message}</h1>
+        <p><input type='button' onClick={this.handleIncrement} value='Increment'/></p>
+        <ValueDisplay value={value} />
       </Main>
     )
   }
