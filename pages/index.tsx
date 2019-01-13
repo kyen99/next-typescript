@@ -16,7 +16,7 @@ interface State {
 }
 
 // Stateless component
-const ValueDisplay = ({ value }: { value: number }) => (
+const ValueDisplay = ({ value }: { value: number }): React.ReactElement<any> => (
   <h2>{value}</h2>
 )
 
@@ -31,10 +31,11 @@ class App extends React.Component<Props, State> {
       message: 'Hello World'
     }
   }
-  private handleIncrement = (e: any) => {
+  public handleIncrement = (e: any) => {
     console.log(e.target.value)
+    const { value } = this.state
     this.setState({
-      value: this.state.value + 1
+      value: value + 1
     })
   }
   public render() {
@@ -43,7 +44,7 @@ class App extends React.Component<Props, State> {
     return (
       <Main>
         <h1>{message}</h1>
-        <p><input type='button' onClick={this.handleIncrement} value='Increment'/></p>
+        <p><input type='button' onClick={this.handleIncrement} value='Increment' /></p>
         <ValueDisplay value={value} />
       </Main>
     )

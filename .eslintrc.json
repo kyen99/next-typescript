@@ -11,7 +11,8 @@
     "typescript"
   ],
   "rules": {
-    "semi": ["error", "never"],
+    "semi": [2, "never"],
+    "no-console": ["warn"],
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx", "js", "jsx"] }]
   }
 }
