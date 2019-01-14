@@ -1,32 +1,33 @@
+import * as React from 'react'
 import Document, { Head, Main, NextScript } from 'next/document'
-// Import styled components ServerStyleSheet
 import { ServerStyleSheet } from 'styled-components'
 
-interface Props {
+type Props = {
   styleTags: string[];
 }
 
 export default class MyDocument extends Document<Props> {
-  static getInitialProps({ renderPage }) {
+  public static getInitialProps({ renderPage }) {
     const sheet = new ServerStyleSheet()
-    const page = renderPage((App) => (props) =>
+    const page = renderPage((App) => (props: Props) =>
       sheet.collectStyles(<App {...props} />),
     )
     const styleTags = sheet.getStyleElement()
     return { ...page, styleTags }
   }
 
-  render() {
+  public render() {
+    const { styleTags } = this.props
     return (
-      <html>
+      <html lang='en'>
         <Head>
-          {this.props.styleTags}
+          {styleTags}
         </Head>
         <body>
           <Main />
           <NextScript />
         </body>
       </html>
-    );
+    )
   }
 }

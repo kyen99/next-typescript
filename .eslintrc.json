@@ -11,8 +11,9 @@
     "typescript"
   ],
   "rules": {
-    "semi": [2, "never"],
-    "no-console": ["warn"],
-    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx", "js", "jsx"] }]
+    "semi": ["error", "never"],
+    "no-console": "warn",
+    "react/jsx-filename-extension": ["warn", { "extensions": [".ts", ".tsx", "js", "jsx"] }],
+    "typescript/member-delimiter-style": "off"
   }
 }

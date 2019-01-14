@@ -8,11 +8,11 @@ const Main = styled.div`
   text-align: center;
 `
 
-interface Props {
-  message: string;
+type Props = {
+  message: string
 }
-interface State {
-  value: number;
+type State = {
+  value: number
 }
 
 // Stateless component
